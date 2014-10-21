@@ -1,27 +1,27 @@
 package evil.dan.RTKforge.server.command;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import evil.dan.RTKforge.RTKforge;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandServerKick;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 
-public class CommandRTKickAll extends CommandBase
-{
+public class CommandRTKickAll extends CommandBase {
 	@Override
-	public String getCommandName()
-	{
+	public String getCommandName() {
 		return "kickall";
 	}
 
 	@Override
-    public int getRequiredPermissionLevel()
-    {
-        return 3;
-    }
-    
+	public int getRequiredPermissionLevel() {
+		return 3;
+	}
+
 	@Override
-	public String getCommandUsage(ICommandSender icommandsender)
-	{
+	public String getCommandUsage(ICommandSender icommandsender) {
 		if (icommandsender.getCommandSenderName() == "Server") {
 			return "kickall - Kick all users from the server. Console Only";
 		} else {
@@ -30,9 +30,13 @@ public class CommandRTKickAll extends CommandBase
 	}
 
 	@Override
-	public void processCommand(ICommandSender icommandsender, String[] astring)
-	{
-		CommandBase kick = new CommandServerKick();
-		kick.processCommand(icommandsender, new String[] { icommandsender.getCommandSenderName() });
+	public void processCommand(ICommandSender icommandsender, String[] astring) {
+		if (icommandsender.getCommandSenderName() == "Server") {
+			RTKforge.KickAll("Server is restarting!\nBe back soon!");
+		}
+		else
+		{
+			System.out.println("Illegal Command Usage by: " + icommandsender.getCommandSenderName());
+		}
 	}
 }

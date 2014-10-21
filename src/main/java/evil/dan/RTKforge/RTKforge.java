@@ -7,8 +7,9 @@ import java.io.PrintStream;
 
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
-
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -41,5 +42,13 @@ public class RTKforge
          ServerCommandManager manager = (ServerCommandManager) command;
          manager.registerCommand(new CommandRTPing());
          manager.registerCommand(new CommandRTKickAll());
+    }
+    
+    public static void KickAll(String KickMessage) {
+		String[] ServerList = FMLCommonHandler.instance().getMinecraftServerInstance().getAllUsernames();
+		for (int i = 0; i < ServerList.length; i++) {
+			EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().func_152612_a(ServerList[i]);
+			entityplayermp.playerNetServerHandler.kickPlayerFromServer(KickMessage);
+		}
     }
 }
