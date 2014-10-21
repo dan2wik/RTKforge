@@ -23,9 +23,9 @@ public class CommandRTKickAll extends CommandBase
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 		if (icommandsender.getCommandSenderName() == "Server") {
-			return "kickall - Kick all users from the server.";
+			return "kickall - Kick all users from the server. Console Only";
 		} else {
-			return "/kickall - Kick all users from the server.";
+			return "/kickall - Kick all users from the server. Console Only";
 		}
 	}
 
