@@ -5,7 +5,6 @@
 /eclipse/*
 /gradle/*
 *.bat
-*.txt
 /gradlew
 /.project
 /.classpath
