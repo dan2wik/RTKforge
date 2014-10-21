@@ -1,4 +1,4 @@
-package evil.dan.RTKforge.server;
+package evil.dan.RTKforge.server.command;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandServerKick;
@@ -14,32 +14,24 @@ public class CommandRTPing extends CommandBase
 	}
 
 	@Override
+    public int getRequiredPermissionLevel()
+    {
+        return 3;
+    }
+    
+	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return null;
+		return "Thud Thud.";
 	}
 
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
 		if (icommandsender.getCommandSenderName() == "Server") {
-			System.out.println("RTPONG++");
+			System.out.println("\nRTPONG++");
 		} else {
-			CommandBase kick = new CommandServerKick();
-			kick.processCommand(icommandsender, new String[] { icommandsender.getCommandSenderName() });
-		}
-	}
-
-	@Override
-	public int compareTo(Object o)
-	{
-		if (o instanceof ICommand)
-		{
-			return this.compareTo((ICommand) o);
-		}
-		else
-		{
-			return 0;
+			System.out.println("Illegal Command Usage by: " + icommandsender.getCommandSenderName());
 		}
 	}
 }
