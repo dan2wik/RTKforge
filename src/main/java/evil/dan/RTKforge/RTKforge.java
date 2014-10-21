@@ -24,7 +24,7 @@ public class RTKforge
     public static final String VERSION = "0.1";
     
     public Boolean RTKconnected = false;
-    public final PrintStream out = new PrintStream(new FileOutputStream(FileDescriptor.out));
+    public final static PrintStream out = new PrintStream(new FileOutputStream(FileDescriptor.out));
     
     @EventHandler
     public void preinit(FMLInitializationEvent event)

@@ -1,5 +1,6 @@
 package evil.dan.RTKforge.server.command;
 
+import evil.dan.RTKforge.RTKforge;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandServerKick;
 import net.minecraft.command.ICommand;
@@ -29,7 +30,7 @@ public class CommandRTPing extends CommandBase
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
 		if (icommandsender.getCommandSenderName() == "Server") {
-			System.out.println("\nRTPONG++");
+			RTKforge.out.println("RTPONG++");
 		} else {
 			System.out.println("Illegal Command Usage by: " + icommandsender.getCommandSenderName());
 		}
